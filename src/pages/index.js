@@ -53,7 +53,7 @@ export default function Home() {
           spacing={4}
         >
           <Box>
-            <Typography variant='h1'>Clear Mind</Typography>
+            <Typography variant='h2'>Clear Mind</Typography>
           </Box>
           <Box>
             <FavoriteIcon id="heart" sx={{ fontSize: 100, fill:"#33CC33" }}   />
