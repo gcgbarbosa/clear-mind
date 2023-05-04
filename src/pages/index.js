@@ -1,16 +1,19 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 import anime from "animejs"
-import { Container, Typography, Box, Paper } from '@mui/material';
+import { Container, Typography, Box, Paper, Stack } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function Home() {
   useEffect(() => {
     anime({
-      targets: 'hello',
-      translateX: 250,
-      rotate: '1turn',
-      backgroundColor: '#CCC',
-      duration: 5000
+      targets: '#heart',
+      easing: 'linear',
+      keyframes: [
+        {value: 0, scale: 2, duration: 3000, fill: '#FF0000'},
+        {value: 3000, scale: 1, duration: 12000, fill: '#33CC33'},
+      ],
+      loop: true
     });
 
   }, [])
@@ -24,26 +27,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container maxWidth="sm">
-        <Box sx={
-          {
-            display:'flex',
-            flexDirection: 'column',
-            p:1,
-            m:1,
-            borderRadius:1,
-          }}>
-
-          <Typography id='hello' variant='h1'>Clear Mind</Typography>
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          spacing={4}
+        >
           <Box>
-            <Paper>
-              p1
-            </Paper>
+            <Typography variant='h1'>Clear Mind</Typography>
           </Box>
-
-          <Box sx={{marginTop:1}}>
-            <Paper>p2</Paper>
+          <Box>
+            <FavoriteIcon id="heart" sx={{ fontSize: 100, fill:"#33CC33" }}   />
           </Box>
-        </Box>
+        </Stack>
       </Container>
     </>
   )
