@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import anime from "animejs"
-import { Container, Typography, Box, Paper, Stack } from '@mui/material';
+import { Container, Typography, Box, Stack } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function Home() {
