@@ -1,19 +1,38 @@
 import Head from 'next/head'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import anime from "animejs"
 import { Container, Typography, Box, Paper, Stack } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function Home() {
+  const [action, setAction] = useState("Welcome :)");
+
   useEffect(() => {
-    anime({
-      targets: '#heart',
+    let animation = anime.timeline({
       easing: 'linear',
-      keyframes: [
-        {value: 0, scale: 2, duration: 3000, fill: '#FF0000'},
-        {value: 3000, scale: 1, duration: 12000, fill: '#33CC33'},
-      ],
       loop: true
+    });
+
+    // scale heart up
+    animation.add({
+      targets: '#heart',
+      scale: 2,
+      duration: 3000,
+      fill: '#FF0000',
+      changeBegin: function() {
+        setAction("Breathe IN")
+      },
+    })
+
+    // scale heart down
+    animation.add({
+      targets: '#heart',
+      scale: 1,
+      duration: 12000,
+      fill: '#33CC33',
+      changeBegin: function() {
+        setAction("Breathe OUT")
+      },
     });
 
   }, [])
@@ -38,6 +57,9 @@ export default function Home() {
           </Box>
           <Box>
             <FavoriteIcon id="heart" sx={{ fontSize: 100, fill:"#33CC33" }}   />
+          </Box>
+          <Box>
+            <Typography variant='h4'>{action}</Typography>
           </Box>
         </Stack>
       </Container>
