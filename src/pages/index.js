@@ -4,10 +4,14 @@ import anime from "animejs"
 import { Container, Typography, Box, Stack } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
+import * as Tone from 'tone'
+
+
 export default function Home() {
   const [action, setAction] = useState("Welcome :)");
 
   useEffect(() => {
+
     let animation = anime.timeline({
       easing: 'linear',
       loop: true
@@ -20,6 +24,9 @@ export default function Home() {
       duration: 3000,
       fill: '#FF0000',
       changeBegin: function() {
+        //play a middle 'C' for the duration of an 8th note
+        const synth = new Tone.Synth().toDestination();
+        synth.triggerAttackRelease("C4", "8n");
         setAction("Breathe IN")
       },
     })
@@ -31,6 +38,8 @@ export default function Home() {
       duration: 12000,
       fill: '#33CC33',
       changeBegin: function() {
+        const synth = new Tone.Synth().toDestination();
+        synth.triggerAttackRelease("E4", "8n");
         setAction("Breathe OUT")
       },
     });
