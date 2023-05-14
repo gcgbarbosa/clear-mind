@@ -8,9 +8,12 @@ import * as Tone from 'tone'
 
 
 export default function Home() {
+
   const [action, setAction] = useState("Welcome :)");
 
   useEffect(() => {
+    const synth = new Tone.Synth().toDestination();
+    Tone.Transport.start();
 
     let animation = anime.timeline({
       easing: 'linear',
@@ -25,8 +28,7 @@ export default function Home() {
       fill: '#FF0000',
       changeBegin: function() {
         //play a middle 'C' for the duration of an 8th note
-        const synth = new Tone.Synth().toDestination();
-        synth.triggerAttackRelease("C4", "8n");
+        synth.triggerAttackRelease("C4", '8n', Tone.Transport.now());
         setAction("Breathe IN")
       },
     })
@@ -38,8 +40,7 @@ export default function Home() {
       duration: 12000,
       fill: '#33CC33',
       changeBegin: function() {
-        const synth = new Tone.Synth().toDestination();
-        synth.triggerAttackRelease("E4", "8n");
+        synth.triggerAttackRelease("E4", '8n', Tone.Transport.now());
         setAction("Breathe OUT")
       },
     });
