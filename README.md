@@ -1,5 +1,7 @@
 # clearmind
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1ca41b2d-42ee-489f-8fee-e3cda65ed1e2/deploy-status)](https://app.netlify.com/sites/clearmind-sao-jorge/deploys)
+
 A new Flutter project.
 
 ## Getting Started
